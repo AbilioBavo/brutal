@@ -1,0 +1,17 @@
+model Client {
+  id                   String    @id @default(uuid())
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  // Dados pessoais
+  firstName            String
+  lastName             String
+  age                  Int
+  email                String    @unique
+  phone                String
+
+  // Dados da Bestie
+  bestieFirstName      String?
+  bestieLastName       String?
+  bestiePhone          String?
+}
