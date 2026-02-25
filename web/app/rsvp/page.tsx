@@ -21,7 +21,7 @@ export default function RsvpPage() {
         <div className="relative mx-auto max-w-6xl">
           <div className="mb-10 flex items-center justify-between">
             <Button asChild variant="outline" className="border-white/40 bg-white/10 text-white hover:bg-white/20">
-              <Link href="/">← Back</Link>
+              <Link href="/">← {text.rsvpPage.back}</Link>
             </Button>
             <LanguageToggle locale={locale} onChange={setLocale} />
           </div>
@@ -40,10 +40,19 @@ export default function RsvpPage() {
                   ))}
                 </ul>
               </div>
+
+              <div className="mt-6 rounded-3xl border border-[#e9d7a4]/45 bg-[#1f1820]/70 p-6 backdrop-blur">
+                <h3 className="font-serif text-2xl italic">{text.rsvpPage.importantInfoTitle}</h3>
+                <ul className="mt-4 space-y-2 text-white/85">
+                  {text.rsvpPage.importantInfo.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <div className="rounded-3xl border border-[#e9d7a4]/45 bg-white p-7 text-black shadow-2xl">
-              <RsvpForm />
+              <RsvpForm text={text} />
             </div>
           </div>
         </div>
