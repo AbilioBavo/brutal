@@ -32,16 +32,6 @@ export type DeleteFilePathParams = {
 export type DeleteFile204 = any;
 
 /**
- * @description Authentication required
-*/
-export type DeleteFile401 = any;
-
-/**
- * @description Insufficient permissions to delete files
-*/
-export type DeleteFile403 = any;
-
-/**
  * @description File not found
 */
 export type DeleteFile404 = any;
@@ -51,5 +41,5 @@ export type DeleteFileMutationResponse = DeleteFile204;
 export type DeleteFileMutation = {
     Response: DeleteFile204;
     PathParams: DeleteFilePathParams;
-    Errors: DeleteFile401 | DeleteFile403 | DeleteFile404;
+    Errors: DeleteFile404;
 };

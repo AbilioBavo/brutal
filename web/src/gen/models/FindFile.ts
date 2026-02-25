@@ -18,16 +18,6 @@ export type FindFilePathParams = {
 export type FindFile200 = Blob;
 
 /**
- * @description Authentication required
-*/
-export type FindFile401 = any;
-
-/**
- * @description Insufficient permissions to view files
-*/
-export type FindFile403 = any;
-
-/**
  * @description File not found
 */
 export type FindFile404 = any;
@@ -37,5 +27,5 @@ export type FindFileQueryResponse = FindFile200;
 export type FindFileQuery = {
     Response: FindFile200;
     PathParams: FindFilePathParams;
-    Errors: FindFile401 | FindFile403 | FindFile404;
+    Errors: FindFile404;
 };

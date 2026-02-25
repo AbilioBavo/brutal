@@ -16,16 +16,6 @@ export const deleteFilePathParamsSchema = z.object({
 export const deleteFile204Schema = z.any()
 
 /**
- * @description Authentication required
- */
-export const deleteFile401Schema = z.any()
-
-/**
- * @description Insufficient permissions to delete files
- */
-export const deleteFile403Schema = z.any()
-
-/**
  * @description File not found
  */
 export const deleteFile404Schema = z.any()

@@ -19,10 +19,7 @@ export type ClientSchema = {
      * @type string
     */
     lastName: string;
-    /**
-     * @type number
-    */
-    age: number;
+    birthDate: (string | string);
     /**
      * @type string
     */

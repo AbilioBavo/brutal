@@ -34,10 +34,7 @@ export type CreateClientMutationRequest = {
      * @type string
     */
     lastName: string;
-    /**
-     * @type number
-    */
-    age: number;
+    birthDate: (string | string);
     /**
      * @type string
     */

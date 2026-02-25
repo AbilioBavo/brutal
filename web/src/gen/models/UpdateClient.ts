@@ -46,10 +46,7 @@ export type UpdateClientMutationRequest = {
      * @type string | undefined
     */
     lastName?: string;
-    /**
-     * @type number | undefined
-    */
-    age?: number;
+    birthDate?: (string | string);
     /**
      * @type string | undefined
     */

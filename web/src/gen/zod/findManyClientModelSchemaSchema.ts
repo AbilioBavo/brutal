@@ -11,7 +11,7 @@ export const findManyClientModelSchemaSchema = z.array(z.object({
 "updatedAt": z.iso.datetime(),
 "firstName": z.string(),
 "lastName": z.string(),
-"age": z.number(),
+"birthDate": z.iso.datetime(),
 "email": z.string(),
 "phone": z.string(),
 "bestieFirstName": z.optional(z.string()),

@@ -87,16 +87,6 @@ export type UploadFile200 = {
 */
 export type UploadFile400 = any;
 
-/**
- * @description Authentication required
-*/
-export type UploadFile401 = any;
-
-/**
- * @description Insufficient permissions to upload files
-*/
-export type UploadFile403 = any;
-
 export type UploadFileMutationRequest = {
     /**
      * @description Maximum file size: 15 MB. Maximum files per upload: 30. Supported formats: jpeg, jpg, png, gif, webp, svg, bmp, tiff, heif, heic, ico, jfif, raw, cr2, nef, orf, sr2, arw, dng, pef, raf, rw2, psd, ai, eps, xcf, jxr, wdp, hdp, jp2, j2k, jpf, jpx, jpm, mj2, avif
@@ -127,5 +117,5 @@ export type UploadFileMutation = {
     Request: UploadFileMutationRequest;
     PathParams: UploadFilePathParams;
     QueryParams: UploadFileQueryParams;
-    Errors: UploadFile400 | UploadFile401 | UploadFile403;
+    Errors: UploadFile400;
 };

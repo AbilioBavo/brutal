@@ -21,11 +21,11 @@ export default defineConfig({
         path: 'models',
       },
     }),
-    pluginReactQuery({
-      output: {
-        path: 'hooks',
-      },
-    }),
+    // pluginReactQuery({
+    //   output: {
+    //     path: 'hooks',
+    //   },
+    // }),
     pluginZod({
       output: {
         path: 'zod',

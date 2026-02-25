@@ -38,7 +38,7 @@ export const updateClient404Schema = z.any()
 export const updateClientMutationRequestSchema = z.object({
     "firstName": z.optional(z.string()),
 "lastName": z.optional(z.string()),
-"age": z.optional(z.number()),
+"birthDate": z.optional(z.union([z.string(), z.iso.datetime()])),
 "email": z.optional(z.string()),
 "phone": z.optional(z.string()),
 "bestieFirstName": z.optional(z.string()),

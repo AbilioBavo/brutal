@@ -93,16 +93,6 @@ export type UpdateFile200 = {
 export type UpdateFile400 = any;
 
 /**
- * @description Authentication required
-*/
-export type UpdateFile401 = any;
-
-/**
- * @description Insufficient permissions to update files
-*/
-export type UpdateFile403 = any;
-
-/**
  * @description Original file not found
 */
 export type UpdateFile404 = any;
@@ -137,5 +127,5 @@ export type UpdateFileMutation = {
     Request: UpdateFileMutationRequest;
     PathParams: UpdateFilePathParams;
     QueryParams: UpdateFileQueryParams;
-    Errors: UpdateFile400 | UpdateFile401 | UpdateFile403 | UpdateFile404;
+    Errors: UpdateFile400 | UpdateFile404;
 };

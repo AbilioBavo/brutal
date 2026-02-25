@@ -30,16 +30,6 @@ export const uploadFile200Schema = z.object({
  */
 export const uploadFile400Schema = z.any()
 
-/**
- * @description Authentication required
- */
-export const uploadFile401Schema = z.any()
-
-/**
- * @description Insufficient permissions to upload files
- */
-export const uploadFile403Schema = z.any()
-
 export const uploadFileMutationRequestSchema = z.object({
     "images": z.optional(z.array(z.instanceof(File)).describe("Maximum file size: 15 MB. Maximum files per upload: 30. Supported formats: jpeg, jpg, png, gif, webp, svg, bmp, tiff, heif, heic, ico, jfif, raw, cr2, nef, orf, sr2, arw, dng, pef, raf, rw2, psd, ai, eps, xcf, jxr, wdp, hdp, jp2, j2k, jpf, jpx, jpm, mj2, avif")),
 "videos": z.optional(z.array(z.instanceof(File)).describe("Maximum file size: 4.98 GB. Maximum files per upload: 10. Supported formats: mp4, avi, mov, mkv, flv, wmv, webm, mpg, mpeg, 3gp, m4v, ts, rm, rmvb, vob, ogv, dv, qt, asf, m2ts, mts, divx, f4v, swf, mxf, roq, nsv, mvb, svi, mpe, m2v, mp2, mpv, h264, h265, hevc")),

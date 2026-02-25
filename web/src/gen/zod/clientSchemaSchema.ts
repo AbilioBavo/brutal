@@ -11,7 +11,7 @@ export const clientSchemaSchema = z.object({
 "updatedAt": z.union([z.string(), z.iso.datetime()]),
 "firstName": z.string(),
 "lastName": z.string(),
-"age": z.number(),
+"birthDate": z.union([z.string(), z.iso.datetime()]),
 "email": z.string(),
 "phone": z.string(),
 "bestieFirstName": z.optional(z.string()),

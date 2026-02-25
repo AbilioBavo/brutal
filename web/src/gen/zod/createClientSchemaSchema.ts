@@ -8,7 +8,7 @@ import { z } from "zod/v4";
 export const createClientSchemaSchema = z.object({
     "firstName": z.string(),
 "lastName": z.string(),
-"age": z.number(),
+"birthDate": z.union([z.string(), z.iso.datetime()]),
 "email": z.string(),
 "phone": z.string(),
 "bestieFirstName": z.optional(z.string()),

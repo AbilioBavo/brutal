@@ -3,7 +3,7 @@ import { z } from "zod";
 const CreateClientSchema = z.object({
   firstName: z.string(),
   lastName: z.string(),
-  age: z.number(),
+  birthDate: z.date().or(z.string()).refine((val) => val instanceof Date || !isNaN(Date.parse(val)), 'Invalid date'),
   email: z.string(),
   phone: z.string(),
   bestieFirstName: z.string().optional(),

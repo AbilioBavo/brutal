@@ -29,7 +29,7 @@ export const createClient403Schema = z.any()
 export const createClientMutationRequestSchema = z.object({
     "firstName": z.string(),
 "lastName": z.string(),
-"age": z.number(),
+"birthDate": z.union([z.string(), z.iso.datetime()]),
 "email": z.string(),
 "phone": z.string(),
 "bestieFirstName": z.optional(z.string()),

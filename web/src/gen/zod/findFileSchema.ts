@@ -15,16 +15,6 @@ export const findFilePathParamsSchema = z.object({
 export const findFile200Schema = z.instanceof(File)
 
 /**
- * @description Authentication required
- */
-export const findFile401Schema = z.any()
-
-/**
- * @description Insufficient permissions to view files
- */
-export const findFile403Schema = z.any()
-
-/**
  * @description File not found
  */
 export const findFile404Schema = z.any()

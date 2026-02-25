@@ -32,16 +32,6 @@ export const updateFile200Schema = z.object({
 export const updateFile400Schema = z.any()
 
 /**
- * @description Authentication required
- */
-export const updateFile401Schema = z.any()
-
-/**
- * @description Insufficient permissions to update files
- */
-export const updateFile403Schema = z.any()
-
-/**
  * @description Original file not found
  */
 export const updateFile404Schema = z.any()

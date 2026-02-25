@@ -26,9 +26,9 @@ export type FindOneClientModelSchema = {
     */
     lastName: string;
     /**
-     * @type number
+     * @type string, date-time
     */
-    age: number;
+    birthDate: string;
     /**
      * @type string
     */

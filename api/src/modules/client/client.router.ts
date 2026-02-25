@@ -4,13 +4,19 @@ import { RouterConfig } from 'arkos'
 import CreateClientSchema from './schemas/create-client.schema'
 
 export const config: RouterConfig<"prisma"> = {
-  createOne:{
-    authentication:false,
-    validation:{
-      body:CreateClientSchema
+  createOne: {
+    authentication: false,
+    validation: {
+      body: CreateClientSchema
     },
+  },
+  findMany: {
+    authentication: true,
+  },
+  findOne: {
+    authentication: true,
   }
- }
+}
 
 const clientRouter = ArkosRouter()
 

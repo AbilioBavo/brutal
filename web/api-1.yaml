@@ -311,8 +311,11 @@ paths:
                   type: string
                 lastName:
                   type: string
-                age:
-                  type: number
+                birthDate:
+                  anyOf:
+                    - type: string
+                      format: date-time
+                    - type: string
                 email:
                   type: string
                 phone:
@@ -326,7 +329,7 @@ paths:
               required:
                 - firstName
                 - lastName
-                - age
+                - birthDate
                 - email
                 - phone
               additionalProperties: false
@@ -427,8 +430,11 @@ paths:
                   type: string
                 lastName:
                   type: string
-                age:
-                  type: number
+                birthDate:
+                  anyOf:
+                    - type: string
+                      format: date-time
+                    - type: string
                 email:
                   type: string
                 phone:
@@ -700,8 +706,6 @@ paths:
         endpoint uses wildcard path matching to serve files from any
         subdirectory.
       operationId: findFile
-      security:
-        - BearerAuth: []
       parameters:
         - name: filePath
           in: path
@@ -718,10 +722,6 @@ paths:
               schema:
                 type: string
                 format: binary
-        "401":
-          description: Authentication required
-        "403":
-          description: Insufficient permissions to view files
         "404":
           description: File not found
   /api/uploads/{fileType}:
@@ -732,8 +732,6 @@ paths:
       description: Upload one or multiple files. Supports image processing options for
         image uploads.
       operationId: uploadFile
-      security:
-        - BearerAuth: []
       parameters:
         - name: fileType
           in: path
@@ -853,10 +851,6 @@ paths:
                     type: string
         "400":
           description: Invalid file type, size limit exceeded, or no file uploaded
-        "401":
-          description: Authentication required
-        "403":
-          description: Insufficient permissions to upload files
   /api/uploads/{fileType}/{fileName}:
     patch:
       tags:
@@ -865,8 +859,6 @@ paths:
       description: Replace an existing file with a new one. Deletes the old file and
         uploads the new one.
       operationId: updateFile
-      security:
-        - BearerAuth: []
       parameters:
         - name: fileType
           in: path
@@ -992,10 +984,6 @@ paths:
                     type: string
         "400":
           description: Invalid file type, size limit exceeded, or no file uploaded
-        "401":
-          description: Authentication required
-        "403":
-          description: Insufficient permissions to update files
         "404":
           description: Original file not found
     delete:
@@ -1004,8 +992,6 @@ paths:
       summary: Delete file
       description: Delete an uploaded file from the server
       operationId: deleteFile
-      security:
-        - BearerAuth: []
       parameters:
         - name: fileType
           in: path
@@ -1027,10 +1013,6 @@ paths:
       responses:
         "204":
           description: File deleted successfully
-        "401":
-          description: Authentication required
-        "403":
-          description: Insufficient permissions to delete files
         "404":
           description: File not found
 components:
@@ -1054,8 +1036,11 @@ components:
           type: string
         lastName:
           type: string
-        age:
-          type: number
+        birthDate:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: string
         email:
           type: string
         phone:
@@ -1072,7 +1057,7 @@ components:
         - updatedAt
         - firstName
         - lastName
-        - age
+        - birthDate
         - email
         - phone
       additionalProperties: false
@@ -1084,8 +1069,11 @@ components:
           type: string
         lastName:
           type: string
-        age:
-          type: number
+        birthDate:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: string
         email:
           type: string
         phone:
@@ -1099,7 +1087,7 @@ components:
       required:
         - firstName
         - lastName
-        - age
+        - birthDate
         - email
         - phone
       additionalProperties: false
@@ -1143,8 +1131,11 @@ components:
           type: string
         lastName:
           type: string
-        age:
-          type: number
+        birthDate:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: string
         email:
           type: string
         phone:
@@ -1158,6 +1149,24 @@ components:
       additionalProperties: false
       $schema: http://json-schema.org/draft-07/schema#
     UpdateOneSchema:
+      type: object
+      properties:
+        email:
+          type: string
+        isSuperUser:
+          type: boolean
+        isStaff:
+          type: boolean
+        isActive:
+          type: boolean
+        role:
+          type: string
+          enum:
+            - Admin
+            - User
+      additionalProperties: false
+      $schema: http://json-schema.org/draft-07/schema#
+    UpdateUserSchema:
       type: object
       properties:
         email:
@@ -1207,46 +1216,11 @@ components:
         - role
       additionalProperties: false
       $schema: http://json-schema.org/draft-07/schema#
-    UpdateUserSchema:
-      type: object
-      properties:
-        email:
-          type: string
-        isSuperUser:
-          type: boolean
-        isStaff:
-          type: boolean
-        isActive:
-          type: boolean
-        role:
-          type: string
-          enum:
-            - Admin
-            - User
-      additionalProperties: false
-      $schema: http://json-schema.org/draft-07/schema#
     LoginSchema:
       type: object
       properties:
         email:
           type: string
-        password:
-          type: string
-          minLength: 8
-          allOf:
-            - pattern: "[a-z]"
-            - pattern: "[A-Z]"
-      required:
-        - email
-        - password
-      additionalProperties: false
-      $schema: http://json-schema.org/draft-07/schema#
-    SignupSchema:
-      type: object
-      properties:
-        email:
-          type: string
-          minLength: 1
         password:
           type: string
           minLength: 8
@@ -1279,6 +1253,23 @@ components:
       required:
         - currentPassword
         - newPassword
+      additionalProperties: false
+      $schema: http://json-schema.org/draft-07/schema#
+    SignupSchema:
+      type: object
+      properties:
+        email:
+          type: string
+          minLength: 1
+        password:
+          type: string
+          minLength: 8
+          allOf:
+            - pattern: "[a-z]"
+            - pattern: "[A-Z]"
+      required:
+        - email
+        - password
       additionalProperties: false
       $schema: http://json-schema.org/draft-07/schema#
     GetMeSchema:
@@ -1343,8 +1334,9 @@ components:
           type: string
         lastName:
           type: string
-        age:
-          type: number
+        birthDate:
+          type: string
+          format: date-time
         email:
           type: string
         phone:
@@ -1361,7 +1353,7 @@ components:
         - updatedAt
         - firstName
         - lastName
-        - age
+        - birthDate
         - email
         - phone
     FindManyClientModelSchema:
@@ -1381,8 +1373,9 @@ components:
             type: string
           lastName:
             type: string
-          age:
-            type: number
+          birthDate:
+            type: string
+            format: date-time
           email:
             type: string
           phone:
@@ -1399,7 +1392,7 @@ components:
           - updatedAt
           - firstName
           - lastName
-          - age
+          - birthDate
           - email
           - phone
     FindOneUserModelSchema:

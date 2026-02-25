@@ -4,12 +4,6 @@ const StringFilterSchema = z.object({
   icontains: z.string().optional()
 });
 
-const NumberFilterSchema = z.object({
-  equals: z.coerce.number().optional(),
-  gte: z.coerce.number().optional(),
-  lte: z.coerce.number().optional()
-});
-
 const DateTimeFilterSchema = z.object({
   equals: z.string().optional(),
   gte: z.string().optional(),
@@ -23,7 +17,7 @@ const QueryClientSchema = z.object({
   fields: z.string().optional(),
   firstName: StringFilterSchema.optional(),
   lastName: StringFilterSchema.optional(),
-  age: NumberFilterSchema.optional(),
+  birthDate: DateTimeFilterSchema.optional(),
   email: StringFilterSchema.optional(),
   phone: StringFilterSchema.optional(),
   bestieFirstName: StringFilterSchema.optional(),
