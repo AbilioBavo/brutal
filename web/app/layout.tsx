@@ -1,37 +1,23 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
-import "./globals.css";
-import { QueryProvider } from "@/lib/query-provider";
-import { AuthProvider } from "@/lib/auth-context";
-import { Toaster } from "sonner";
+import type { Metadata } from 'next'
+import { Geist_Mono, Montserrat, Playfair_Display } from 'next/font/google'
+import './globals.css'
+import { QueryProvider } from '@/lib/query-provider'
+import { AuthProvider } from '@/lib/auth-context'
+import { Toaster } from 'sonner'
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-sans' })
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-serif' })
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
 
 export const metadata: Metadata = {
-  title: "Brutal Pink Table",
-  description: "",
-};
+  title: 'Brutal Fruit Pink Table',
+  description: 'Brutal Fruit Spritzer Pink Table RSVP Experience',
+}
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} scroll-smooth`}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={`${montserrat.variable} ${playfair.variable} scroll-smooth`}>
+      <body className={`${geistMono.variable} antialiased`}>
         <QueryProvider>
           <AuthProvider>
             {children}
@@ -40,5 +26,5 @@ export default function RootLayout({
         </QueryProvider>
       </body>
     </html>
-  );
+  )
 }
