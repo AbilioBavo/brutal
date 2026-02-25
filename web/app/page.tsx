@@ -7,31 +7,22 @@ import { GallerySection } from '@/components/gallery-section'
 import { CtaSection } from '@/components/cta-section'
 import { Footer } from '@/components/footer'
 import { AgeGate } from '@/components/age-gate'
-import { RsvpDialog } from '@/components/rsvp-dialog'
+import { AgeBadge } from '@/components/age-badge'
+import { copy, type Locale } from '@/lib/marketing-copy'
 
 export default function Page() {
-  const [rsvpOpen, setRsvpOpen] = useState(false)
+  const [locale, setLocale] = useState<Locale>('pt')
+  const text = copy[locale]
 
   return (
     <AgeGate>
-      <main className="min-h-screen">
-        {/* Hero Section */}
-        <HeroSection />
-
-        {/* Description Section */}
-        <DescriptionSection />
-
-        {/* Gallery Section */}
+      <main className="min-h-screen bg-[#fffaf8]">
+        <AgeBadge />
+        <HeroSection locale={locale} onLocaleChange={setLocale} text={text} />
+        <CtaSection text={text} />
+        <DescriptionSection text={text} />
         <GallerySection />
-
-        {/* CTA Section */}
-        <CtaSection onRsvpClick={() => setRsvpOpen(true)} />
-
-        {/* Footer */}
-        <Footer />
-
-        {/* RSVP Dialog */}
-        <RsvpDialog open={rsvpOpen} onOpenChange={setRsvpOpen} />
+        <Footer text={text} />
       </main>
     </AgeGate>
   )
