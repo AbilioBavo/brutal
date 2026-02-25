@@ -32,6 +32,9 @@ export interface MarketingCopy {
     bestieFirstName: string
     bestieLastName: string
     bestiePhone: string
+    bestieSection: string
+    removeBestie: string
+    addBestie: string
     submit: string
     submitting: string
     success: string
@@ -91,7 +94,10 @@ export const copy: Record<Locale, MarketingCopy> = {
       bestieFirstName: 'Nome da bestie',
       bestieLastName: 'Apelido da bestie',
       bestiePhone: 'Telefone da bestie',
-      submit: 'Confirmar RSVP',
+      bestieSection: 'Informações da bestie',
+      removeBestie: 'Remover bestie',
+      addBestie: 'Adicionar bestie',
+      submit: 'Confirmar Presença',
       submitting: 'A enviar...',
       success: 'RSVP enviado com sucesso!',
       error: 'Não foi possível enviar o RSVP. Tente novamente.',
@@ -147,7 +153,10 @@ export const copy: Record<Locale, MarketingCopy> = {
       bestieFirstName: 'Bestie first name',
       bestieLastName: 'Bestie last name',
       bestiePhone: 'Bestie phone',
-      submit: 'Confirm RSVP',
+      bestieSection: 'Bestie information',
+      removeBestie: 'Remove bestie',
+      addBestie: 'Add bestie',
+      submit: 'Confirm Attendance',
       submitting: 'Submitting...',
       success: 'RSVP submitted successfully!',
       error: 'Could not submit RSVP. Please try again.',

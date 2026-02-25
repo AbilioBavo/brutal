@@ -51,7 +51,7 @@ export default function RsvpPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-[#e9d7a4]/45 bg-white p-7 text-black shadow-2xl">
+            <div className="rounded-3xl border border-[#e9d7a4]/45 bg-white p-7 text-black shadow-2xl lg:min-h-[760px]">
               <RsvpForm text={text} />
             </div>
           </div>
